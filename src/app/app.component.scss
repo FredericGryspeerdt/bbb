@@ -1,0 +1,29 @@
+.session {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.frame {
+  width: 50px;
+  height: 50px;
+  margin: 4px;
+  background-color: gray;
+
+  &--active {
+    border: 1px solid red;
+  }
+
+  &--past {
+    background-color: green;
+  }
+
+  &--work {
+    border-bottom: 2px solid blue;
+  }
+
+  &--break {
+    border-bottom: 2px solid yellow;
+  }
+
+}

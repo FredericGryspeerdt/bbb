@@ -1,0 +1,23 @@
+<button (click)="start()">Start</button>
+<button (click)="stop()">Stop</button>
+
+<div>inspanningsduur: {{ workDuration }} seconden</div>
+<div>ontspanningsduur: {{ breakDuration }} seconden</div>
+<div>aantal sessies: {{ numberOfSessions }}</div>
+
+------------------------------------
+<div>state: {{ workout.state }}</div>
+<div>timer: {{ workout.timer }}</div>
+<div>aantal afgewerkte sessies: {{ (sessionCount$ | async) || 0}} / {{ numberOfSessions }}</div>
+<div class="session">
+  <div
+    *ngFor="let frame of workout.frames; index as idx; last as isLast"
+    class="frame"
+    [class.frame--active]="idx === workout.timer && workout.state === 'started'"
+    [class.frame--past]="
+      idx < workout.timer || (idx === workout.timer && isLast)
+    "
+    [class.frame--work]="frame.description === 'work'"
+    [class.frame--break]="frame.description === 'break'"
+  ></div>
+</div>
